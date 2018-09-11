@@ -17,6 +17,7 @@
         :name="entry.name"
         :children="entry.children"
         :key="$index"
+        :index="$index"
         @selected="onSelect"
         @update-directory="updateDirectory"/>
     </li>
@@ -54,6 +55,9 @@ export default {
       default () {
         return []
       }
+    },
+    index: {
+      type: Number
     }
   },
   computed: {
@@ -74,6 +78,7 @@ export default {
       if (this.isDirectory) {
         this.updateDirectory({
           component: this,
+          index: this.index,
           paths: []
         })
       }
