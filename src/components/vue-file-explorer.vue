@@ -36,7 +36,7 @@ library.add(faAngleRight)
 export default {
   name: 'vue-file-explorer',
   components: {
-    FontAwesomeIcon
+    'font-awesome-icon': FontAwesomeIcon
   },
   props: {
     absolutePath: {
