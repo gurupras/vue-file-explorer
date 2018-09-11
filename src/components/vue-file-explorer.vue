@@ -25,7 +25,6 @@
 </template>
 
 <script>
-import Vue from 'vue'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faAngleDown, faAngleRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -34,10 +33,11 @@ import FileIcons from 'file-icons-js'
 library.add(faAngleDown)
 library.add(faAngleRight)
 
-Vue.component('font-awesome-icon', FontAwesomeIcon)
-
 export default {
   name: 'vue-file-explorer',
+  components: {
+    FontAwesomeIcon
+  },
   props: {
     absolutePath: {
       type: String
