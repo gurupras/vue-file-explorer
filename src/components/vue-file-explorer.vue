@@ -11,7 +11,7 @@
         </span>
       </div>
       <vue-file-explorer v-show="expanded" v-if="isDirectory"
-        v-for="(entry, $index) in children"
+        v-for="(entry, $index) in childrenData"
         class="nested"
         :is-directory="entry.isDirectory"
         :name="entry.name"
@@ -55,9 +55,6 @@ export default {
       default () {
         return []
       }
-    },
-    index: {
-      type: Number
     }
   },
   computed: {
@@ -70,6 +67,7 @@ export default {
   },
   data () {
     return {
+      childrenData: [],
       expanded: false
     }
   },
@@ -78,7 +76,6 @@ export default {
       if (this.isDirectory) {
         this.updateDirectory({
           component: this,
-          index: this.index,
           paths: []
         })
       }
@@ -104,12 +101,11 @@ export default {
     updateDirectory (data) {
       const path = this.absolutePath || this.name
       data.paths = [path, ...data.paths]
-      if (!data.parent) {
-        // This element is the parent
-        data.parent = this
-      }
       this.$emit('update-directory', data)
     }
+  },
+  beforeMount () {
+    this.childrenData.push(...this.children)
   }
 }
 </script>

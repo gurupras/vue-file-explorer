@@ -32,8 +32,7 @@
           <p> You can test the functionality of {{ appName }} below </p>
           <div class="explorer">
             <ul style="list-style-type: none;">
-              <vue-file-explorer v-for="(mount, $index) in mountPoints" :key="mount.name"
-                :index="$index"
+              <vue-file-explorer v-for="mount in mountPoints" :key="mount.name"
                 :absolute-path="mount.absolutePath"
                 :is-directory="mount.isDirectory"
                 :name="mount.name"
