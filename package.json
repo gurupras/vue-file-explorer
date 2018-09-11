@@ -6,6 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "build-bundle": "vue-cli-service build --target lib --name vue-file-explorer ./src/components/vue-file-explorer.vue",
+    "publish": "npm run build-bundle && npm publish --access public",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit"
   },
