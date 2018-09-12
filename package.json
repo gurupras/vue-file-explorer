@@ -1,6 +1,6 @@
 {
   "name": "@gurupras/vue-file-explorer",
-  "version": "0.1.6",
+  "version": "0.1.8",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -10,7 +10,7 @@
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit"
   },
-  "main": "./dist/vue-file-explorer.common.js",
+  "main": "./src/components/vue-file-explorer.vue",
   "files": [
     "dist/*",
     "src/*",
@@ -23,7 +23,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.4",
     "@fortawesome/free-solid-svg-icons": "^5.3.1",
     "@fortawesome/vue-fontawesome": "^0.1.1",
-    "file-icons-js": "github:websemantics/file-icons-js",
+    "@gurupras/file-icons-js": "^1.0.1",
     "vue": "^2.5.17"
   },
   "devDependencies": {

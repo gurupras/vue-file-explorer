@@ -28,7 +28,7 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faAngleDown, faAngleRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import FileIcons from 'file-icons-js'
+import FileIcons from '@gurupras/file-icons-js'
 
 library.add(faAngleDown)
 library.add(faAngleRight)
@@ -110,7 +110,7 @@ export default {
 }
 </script>
 
-<style src="@/../node_modules/file-icons-js/css/style.css"></style>
+<style src="@gurupras/file-icons-js/css/style.css"></style>
 
 <style scoped>
 .entry {
@@ -165,13 +165,5 @@ ol {
 
 .icon::before {
   background-color: inherit !important;
-}
-
-.folder-icon:before {
-  font-family: octicons;
-  font-size: 16px;
-  color: grey;
-  top: 1px;
-  content: "\f016";
 }
 </style>
