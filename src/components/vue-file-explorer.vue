@@ -100,7 +100,7 @@ export default {
       })
     },
     onSelect ({ event, paths, component }) {
-      paths = [this.name, ...paths]
+      paths.unshift(this.name)
       this.$emit('selected', ...Array.from(arguments))
     },
     updateDirectory (data) {
