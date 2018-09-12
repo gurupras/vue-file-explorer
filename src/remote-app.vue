@@ -36,7 +36,7 @@
                 :absolute-path="mount.absolutePath"
                 :is-directory="mount.isDirectory"
                 :name="mount.name"
-                :children="mount.children"
+                :children.sync="mount.children"
                 @selected="onSelect"
                 @update-directory="onUpdateDirectory"/>
             </ul>
@@ -53,6 +53,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import VueFileExplorer from './components/vue-file-explorer'
 export default {
   components: {
@@ -61,112 +62,7 @@ export default {
   data () {
     return {
       appName: 'File Explorer',
-      mountPoints: [
-        {
-          name: '/home',
-          isDirectory: true,
-          children: [
-            {
-              name: 'Downloads',
-              isDirectory: true,
-              children: [
-                {
-                  name: 'icon-pack.zip',
-                  isDirectory: false
-                },
-                {
-                  name: 'README.md',
-                  isDirectory: false
-                },
-                {
-                  name: 'form-37742.docx',
-                  isDirectory: false
-                }
-              ]
-            },
-            {
-              isDirectory: true,
-              name: 'Workspace',
-              children: [
-                {
-                  name: 'file-browser',
-                  isDirectory: true,
-                  children: [
-                    {
-                      name: 'src',
-                      isDirectory: true,
-                      children: [
-                        {
-                          name: 'assets',
-                          isDirectory: true,
-                          children: [
-                            {
-                              name: 'favicon.ico',
-                              isDirectory: false
-                            }
-                          ]
-                        },
-                        {
-                          name: 'components',
-                          isDirectory: true,
-                          children: [
-                            {
-                              name: 'entry.vue',
-                              isDirectory: false
-                            }
-                          ]
-                        },
-                        {
-                          name: 'views',
-                          isDirectory: true,
-                          children: []
-                        },
-                        {
-                          name: 'App.vue',
-                          isDirectory: false
-                        },
-                        {
-                          name: 'main.js',
-                          isDirectory: false
-                        },
-                        {
-                          name: 'router.js',
-                          isDirectory: false
-                        },
-                        {
-                          name: 'store.js',
-                          isDirectory: false
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              absolutePath: `D:\\Videos\\2016\\vacation.mp4`,
-              isDirectory: false,
-              name: 'vacation.mp4'
-            }
-          ]
-        },
-        {
-          name: '/usr',
-          isDirectory: true,
-          children: [
-            {
-              name: 'lib',
-              isDirectory: true,
-              children: [
-                {
-                  name: 'libau.so',
-                  isDirectory: false
-                }
-              ]
-            }
-          ]
-        }
-      ],
+      mountPoints: [],
       selected: []
     }
   },
@@ -219,9 +115,18 @@ export default {
         this.selected.push(entry)
       }, this)
     },
-    onUpdateDirectory (data) {
-
+    async onUpdateDirectory (data) {
+      const response = await axios.get('/api/ls', {
+        params: {
+          paths: data.paths
+        }
+      })
+      data.component.childrenData = response.data
     }
+  },
+  async beforeMount () {
+    const response = await axios.get('/api/get-mount-points')
+    this.mountPoints = response.data
   }
 }
 </script>

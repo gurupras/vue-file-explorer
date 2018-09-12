@@ -93,10 +93,15 @@ export default {
         shiftSelect: evt.shiftKey,
         target: evt.target
       }
-      this.onSelect([evt, this])
+      this.onSelect({
+        event: evt,
+        paths: [],
+        component: this
+      })
     },
-    onSelect (...args) {
-      this.$emit('selected', ...args)
+    onSelect ({ event, paths, component }) {
+      paths = [this.name, ...paths]
+      this.$emit('selected', ...Array.from(arguments))
     },
     updateDirectory (data) {
       const path = this.absolutePath || this.name
