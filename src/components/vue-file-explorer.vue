@@ -166,4 +166,9 @@ ol {
 .icon::before {
   background-color: inherit !important;
 }
+
+.folder-icon:before {
+  color: grey;
+}
+
 </style>
