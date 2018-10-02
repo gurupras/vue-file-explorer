@@ -5,12 +5,12 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "build-bundle": "vue-cli-service build --target lib --name vue-file-explorer ./src/components/vue-file-explorer.vue",
-    "prepublishOnly": "vue-cli-service build --target lib --name vue-file-explorer ./src/components/vue-file-explorer.vue",
+    "build-bundle": "vue-cli-service build --target lib --name vue-file-explorer src/components/vue-file-explorer.vue",
+    "prepublishOnly": "vue-cli-service build --target lib --name vue-file-explorer src/components/vue-file-explorer.vue",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit"
   },
-  "main": "./dist/vue-file-explorer.common.js",
+  "main": "./dist/vue-file-explorer.umd.js",
   "files": [
     "dist/*",
     "src/*",
@@ -23,7 +23,6 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.4",
     "@fortawesome/free-solid-svg-icons": "^5.3.1",
     "@fortawesome/vue-fontawesome": "^0.1.1",
-    "@gurupras/file-icons-js": "^1.0.1",
     "vue": "^2.5.17"
   },
   "devDependencies": {
